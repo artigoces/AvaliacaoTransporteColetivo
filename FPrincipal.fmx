@@ -1,0 +1,505 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 590
+  ClientWidth = 385
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object lytPrincipal: TLayout
+    Align = Client
+    Size.Width = 385.000000000000000000
+    Size.Height = 590.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object tlbTopo: TToolBar
+      Size.Width = 385.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      TintColor = claTeal
+      object btnAdicionar: TButton
+        Align = Right
+        IconTintColor = claWhite
+        Position.X = 337.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'addtoolbutton'
+        TabOrder = 0
+        Text = 'btnAdicionar'
+        OnClick = btnAdicionarClick
+      end
+      object btnFiltro: TButton
+        Align = Left
+        IconTintColor = claWhite
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'drawertoolbutton'
+        TabOrder = 1
+        Text = 'btnFiltro'
+        OnClick = btnFiltroClick
+      end
+      object lblTitulo: TLabel
+        Align = Center
+        StyledSettings = [Family, Size, Style]
+        Size.Width = 186.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = claWhite
+        TextSettings.HorzAlign = Center
+        Text = 'Ocorr'#234'ncias'
+        TabOrder = 2
+      end
+    end
+    object lstbxOcorrencias: TListBox
+      Align = Client
+      Size.Width = 385.000000000000000000
+      Size.Height = 542.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      DisableFocusEffect = True
+      DefaultItemStyles.ItemStyle = 'listboxitembottomdetail'
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      Viewport.Width = 385.000000000000000000
+      Viewport.Height = 494.000000000000000000
+      object srchbxOcorencias: TSearchBox
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Top
+        TabOrder = 0
+        Size.Width = 385.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'pesquisar'
+      end
+    end
+    object rctnglFiltro: TRectangle
+      Align = Client
+      Size.Width = 385.000000000000000000
+      Size.Height = 542.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object lytFiltroData: TLayout
+        Align = Left
+        Position.X = 230.000000000000000000
+        Size.Width = 120.000000000000000000
+        Size.Height = 542.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object lytFiltroDataOpcoes: TLayout
+          Align = Top
+          Size.Width = 120.000000000000000000
+          Size.Height = 201.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object rctnglFiltroDataTodas: TRectangle
+            Align = MostTop
+            Fill.Color = claWhite
+            Size.Width = 120.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGainsboro
+            object rdbtnFiltroDataTodas: TRadioButton
+              Align = Client
+              GroupName = 'FiltroData'
+              Margins.Left = 3.000000000000000000
+              Size.Width = 117.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = 'Todas'
+            end
+          end
+          object rctnglFiltroDataHoje: TRectangle
+            Align = Top
+            Fill.Color = claWhite
+            Position.Y = 50.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGainsboro
+            object rdbtnFiltroDataHoje: TRadioButton
+              Align = Client
+              GroupName = 'FiltroData'
+              Margins.Left = 3.000000000000000000
+              Size.Width = 117.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = 'Hoje'
+            end
+          end
+          object rctnglFiltroDataUlt30Dias: TRectangle
+            Align = Top
+            Fill.Color = claWhite
+            Position.Y = 150.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGainsboro
+            object rdbtnFiltroDataUlt30Dias: TRadioButton
+              Align = Client
+              GroupName = 'FiltroData'
+              Margins.Left = 3.000000000000000000
+              Size.Width = 117.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = #218'lt 30 Dias'
+            end
+          end
+          object rctnglFiltroDataUlt7Dias: TRectangle
+            Align = Top
+            Fill.Color = claWhite
+            Position.Y = 100.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGainsboro
+            object rdbtnFiltroDataUlt7Dias: TRadioButton
+              Align = Client
+              GroupName = 'FiltroData'
+              Margins.Left = 3.000000000000000000
+              Size.Width = 117.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = #218'lt 7 Dias'
+            end
+          end
+        end
+      end
+      object lytFiltro: TLayout
+        Align = Left
+        Size.Width = 125.000000000000000000
+        Size.Height = 542.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object lstbxFiltro: TListBox
+          Align = Top
+          Margins.Right = 2.000000000000000000
+          Size.Width = 123.000000000000000000
+          Size.Height = 281.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          DisableFocusEffect = True
+          DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
+          DefaultItemStyles.GroupHeaderStyle = ''
+          DefaultItemStyles.GroupFooterStyle = ''
+          Viewport.Width = 123.000000000000000000
+          Viewport.Height = 281.000000000000000000
+          object lstbxgrphdrAtualizar: TListBoxGroupHeader
+            Size.Width = 123.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 6
+            Text = 'Dados'
+          end
+          object lstbxitmAtualizar: TListBoxItem
+            HitTest = True
+            ItemData.Accessory = aMore
+            Position.Y = 30.000000000000000000
+            TabOrder = 5
+            Text = 'Atualizar'
+            OnClick = lstbxitmAtualizarClick
+          end
+          object lstbxgrphdrFiltro: TListBoxGroupHeader
+            Position.Y = 74.000000000000000000
+            Size.Width = 123.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Filtros'
+          end
+          object lstbxitmFiltroLinha: TListBoxItem
+            ItemData.Accessory = aMore
+            Position.Y = 104.000000000000000000
+            TabOrder = 1
+            Text = 'Linha'
+            OnClick = lstbxitmFiltroLinhaClick
+          end
+          object lstbxitmFiltroData: TListBoxItem
+            ItemData.Accessory = aMore
+            Position.Y = 148.000000000000000000
+            TabOrder = 2
+            Text = 'Data'
+            OnClick = lstbxitmFiltroDataClick
+          end
+          object lstbxitmFiltroTipo: TListBoxItem
+            ItemData.Accessory = aMore
+            Position.Y = 192.000000000000000000
+            TabOrder = 4
+            Text = 'Tipo'
+            OnClick = lstbxitmFiltroTipoClick
+          end
+          object lstbxitmFiltroAplicar: TListBoxItem
+            Selectable = False
+            Position.Y = 236.000000000000000000
+            StyleLookup = 'listboxitemlabel'
+            TabOrder = 3
+            Text = 'Filtrar'
+            OnClick = lstbxitmFiltroAplicarClick
+            object imgFiltro: TImage
+              MultiResBitmap.Height = 20
+              MultiResBitmap.Width = 20
+              MultiResBitmap = <
+                item
+                  Width = 20
+                  Height = 20
+                  PNG = {
+                    89504E470D0A1A0A0000000D49484452000000140000001408060000008D891D
+                    0D000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                    00A749444154384F636018EC8011EA4001209D07C44C643AF81F50DF2420FE80
+                    ACBF16C8F94F26AEC1E590256418B8189FAFD88192474930F408502D480F5E20
+                    0A94BD4784A1203520B544016DA0AA8F780C05C96911651292220F20FB0F1643
+                    4162EEA41A06539F8BC5C01C720D83E9DB836428888D171093903F209980CCC6
+                    6A3031061272148AFCF030F007497E2642311B504D16103F06E23544A8275A09
+                    C8604BA2550F5A85005D5E50B2999E7A8A0000000049454E44AE426082}
+                  FileName = 
+                    'C:\Users\VM Windows\Downloads\AppDelphi\imagens\filtro_preto_20.' +
+                    'png'
+                end>
+              Align = Left
+              Size.Width = 25.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+        end
+      end
+      object lytFiltroLinha: TLayout
+        Align = Left
+        Position.X = 125.000000000000000000
+        Size.Width = 105.000000000000000000
+        Size.Height = 542.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        object lstbxLinhas: TListBox
+          Align = Client
+          Size.Width = 105.000000000000000000
+          Size.Height = 542.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          DisableFocusEffect = True
+          DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
+          DefaultItemStyles.GroupHeaderStyle = ''
+          DefaultItemStyles.GroupFooterStyle = ''
+          Viewport.Width = 105.000000000000000000
+          Viewport.Height = 494.000000000000000000
+          object srchbxLinha: TSearchBox
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Top
+            TabOrder = 0
+            Size.Width = 105.000000000000000000
+            Size.Height = 48.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'pesquisar'
+          end
+        end
+      end
+      object lytFiltroTipo: TLayout
+        Align = Left
+        Position.X = 120.000000000000000000
+        Size.Width = 129.000000000000000000
+        Size.Height = 542.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        TabOrder = 3
+        object lytFiltroTipoOpcoes: TLayout
+          Align = Top
+          Size.Width = 129.000000000000000000
+          Size.Height = 257.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object rctnglFiltroTipoTodos: TRectangle
+            Align = MostTop
+            Fill.Color = claWhite
+            Size.Width = 129.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGainsboro
+            object rdbtnFiltroTipoTodos: TRadioButton
+              Align = Client
+              GroupName = 'FiltroTipo'
+              IsChecked = True
+              Margins.Left = 3.000000000000000000
+              Size.Width = 126.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = 'Todos'
+            end
+          end
+          object rctnglFiltroTipoDenuncia: TRectangle
+            Align = Top
+            Fill.Color = claWhite
+            Position.Y = 50.000000000000000000
+            Size.Width = 129.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGainsboro
+            object rdbtnFiltroTipoDenuncia: TRadioButton
+              Tag = 1
+              Align = Client
+              GroupName = 'FiltroTipo'
+              Margins.Left = 3.000000000000000000
+              Size.Width = 126.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = 'Den'#250'ncia'
+            end
+          end
+          object rctnglFiltroTipoReclamacao: TRectangle
+            Align = Top
+            Fill.Color = claWhite
+            Position.Y = 150.000000000000000000
+            Size.Width = 129.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGainsboro
+            object rdbtnFiltroTipoReclamacao: TRadioButton
+              Tag = 3
+              Align = Client
+              GroupName = 'FiltroTipo'
+              Margins.Left = 3.000000000000000000
+              Size.Width = 126.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = 'Reclama'#231#227'o'
+            end
+          end
+          object rctnglFiltroTipoElogio: TRectangle
+            Align = Top
+            Fill.Color = claWhite
+            Position.Y = 100.000000000000000000
+            Size.Width = 129.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGainsboro
+            object rdbtnFiltroTipoElogio: TRadioButton
+              Tag = 2
+              Align = Client
+              GroupName = 'FiltroTipo'
+              Margins.Left = 3.000000000000000000
+              Size.Width = 126.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = 'Elogio'
+            end
+          end
+          object rctnglFiltroTipoSolicitacao: TRectangle
+            Align = Top
+            Fill.Color = claWhite
+            Position.Y = 200.000000000000000000
+            Size.Width = 129.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGainsboro
+            object rdbtnFiltroTipoSolicitacao: TRadioButton
+              Tag = 4
+              Align = Client
+              GroupName = 'FiltroTipo'
+              Margins.Left = 3.000000000000000000
+              Size.Width = 126.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = 'Solicita'#231#227'o'
+            end
+          end
+        end
+      end
+    end
+  end
+  object fdqryOcorrencia: TFDQuery
+    Connection = dtmdlDados.fdconConexao
+    SQL.Strings = (
+      'SELECT'
+      '    O.OID,'
+      '    O.ODATA,'
+      '    O.OTITULO,'
+      '    T.TID,'
+      '    T.TDESCRICAO,'
+      '    L.LNUMERO,'
+      '    L.LID,'
+      '    DATE(O.ODATA) AS DATA_FILTRO'
+      'FROM '
+      '    OCORRENCIA O'
+      '    JOIN TIPO T ON O.TID = T.TID'
+      '    JOIN LINHA L ON O.LID = L.LID'
+      'ORDER BY'
+      '    O.TID,'
+      '    O.ODATA,'
+      '    L.LNUMERO')
+    Left = 152
+    Top = 392
+    object fdqryOcorrenciaODATA: TDateTimeField
+      FieldName = 'ODATA'
+      Origin = 'ODATA'
+      Required = True
+    end
+    object fdqryOcorrenciaOTITULO: TWideStringField
+      FieldName = 'OTITULO'
+      Origin = 'OTITULO'
+      Required = True
+      Size = 100
+    end
+    object fdqryOcorrenciaTDESCRICAO: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'TDESCRICAO'
+      Origin = 'TDESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+    object fdqryOcorrenciaLNUMERO: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'LNUMERO'
+      Origin = 'LNUMERO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqryOcorrenciaOID: TWideStringField
+      FieldName = 'OID'
+      Origin = 'OID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+  end
+  object fdqryLinha: TFDQuery
+    Connection = dtmdlDados.fdconConexao
+    SQL.Strings = (
+      'SELECT * FROM LINHA')
+    Left = 336
+    Top = 232
+    object fdqryLinhaLID: TFDAutoIncField
+      FieldName = 'LID'
+      Origin = 'LID'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object fdqryLinhaLNOME: TWideStringField
+      FieldName = 'LNOME'
+      Origin = 'LNOME'
+      Required = True
+      Size = 100
+    end
+    object fdqryLinhaLNUMERO: TIntegerField
+      FieldName = 'LNUMERO'
+      Origin = 'LNUMERO'
+      Required = True
+    end
+  end
+end
