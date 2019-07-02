@@ -6,7 +6,7 @@ Desenvolvimento de um Aplicativo Móvel de Avaliação do Transporte Coletivo Ur
 Instalação IDE Desenvolvimento: RAD Studio Community Edition
 
   1. Pré requisitos de hardware para instalação: http://docwiki.embarcadero.com/RADStudio/Rio/en/Installation_Notes
-  2 Acesse a página de Download, faça o cadastro para obter a licença da versão Community.  https://www.embarcadero.com/br/products/delphi/starter/free-download. Após o cadastro, você receberá em seu email o serial e link de download do ISO de instalação
+  2. Acesse a página de Download, faça o cadastro para obter a licença da versão Community.  https://www.embarcadero.com/br/products/delphi/starter/free-download. Após o cadastro, você receberá em seu email o serial e link de download do ISO de instalação
   3. Caso não atenda aos requisitos da versão Community, faça download da versão trial de 30 dias: https://www.embarcadero.com/br/products/rad-studio/start-for-free
   4. Instalação:
     a. Após aceitar o termo de uso e política de privacidade, será exibida a tela ‘Input License’
