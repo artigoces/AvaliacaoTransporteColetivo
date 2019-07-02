@@ -42,4 +42,8 @@ Desenvolvimento de um Aplicativo Móvel de Avaliação do Transporte Coletivo Ur
 <h3>Links Apoio</h3>
 </br>
   Documentação completa de configuração de todo o ambiente de desenvolvimento para Android: http://docwiki.embarcadero.com/RADStudio/Rio/en/Android_Mobile_Application_Development
+</br>
+</br>
+Autor da unit U_MsgD.pas: https://github.com/JonatanSouza04/Firemonkey-Dialogs-Material-Design
+
 
