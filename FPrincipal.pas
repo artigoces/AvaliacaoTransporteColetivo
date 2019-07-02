@@ -235,6 +235,7 @@ begin
     FMsgD.Title   := pTitulo;
     FMsgD.Text    := 'Aguarde...';
     FMsgD.Height  := 140;
+    FMsgD.Width   := frmPrincipal.Width - 50;
     FMsgD.ShowMsgD;
     Application.ProcessMessages;
   end
@@ -356,7 +357,7 @@ begin
   FOcorrenciaObj := TOcorrenciaObj.Create;
 
   FThreadFirebase         := TThreadFirebaseObj.Create;
-  FThreadFirebase.URLBase := '';
+  FThreadFirebase.URLBase := 'https://appartigoces.firebaseio.com/';
 
   FIMEI := 'PC';
 
@@ -662,6 +663,7 @@ begin
         if not ((Length(AGrantResults) = Length(vArray)) and vConcedido) then
           ShowMessage('Permissão não foi concedida')
         else begin
+          Application.ProcessMessages;
           FIMEI := GetIMEI;
           FirebaseLerDados;
         end;

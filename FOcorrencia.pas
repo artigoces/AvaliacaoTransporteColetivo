@@ -291,7 +291,7 @@ begin
 
   {$IFDEF MSWINDOWS}
     vBitmap := TBitmap.Create;
-    vBitmap.LoadFromFile('..\imagens\onibus-vandalizados.jpg');
+    vBitmap.LoadFromFile('..\..\imagens\onibus-vandalizados.jpg');
     MensagemAddLista('', Now, True, vBitmap);
   {$ENDIF}
 end;
@@ -307,13 +307,14 @@ begin
 end;
 
 procedure TfrmOcorrencia.ConfigTela;
+var
+  vLocalizacao: TMapCoordinate;
 begin
-  lctnsnsrSensorGPS.Active := True;
+  mpvwMapa.Location.Zero;
   LimparTela;
 
   if FOID = '' then begin
     tbcPrincipal.ActiveTab := tbtmPrincTipo;
-    mpvwMapa.OnMapClick    := mpvwMapaMapClick;
   end
   else begin
     LerDados;
@@ -325,6 +326,8 @@ begin
     tbcPrincipal.ActiveTab := tbtmPrincCadastro;
     tbcCadastro.ActiveTab  := tbtmCadDados;
   end;
+
+  lctnsnsrSensorGPS.Active := True;
 end;
 
 procedure TfrmOcorrencia.ConfigTelaAguarde(const pExibir: Boolean);
@@ -399,16 +402,22 @@ procedure TfrmOcorrencia.lctnsnsrSensorGPSLocationChanged(Sender: TObject; const
 var
   vLocalizacao: TMapCoordinate;
 begin
-  if (NewLocation.Latitude <> 0) and (NewLocation.Longitude <> 0) and
-     (mpvwMapa.Location.Latitude = 0) and (mpvwMapa.Location.Longitude = 0) then begin
-    vLocalizacao.Latitude  := NewLocation.Latitude;
-    vLocalizacao.Longitude := NewLocation.Longitude;
-    mpvwMapa.Location      := vLocalizacao;
-
-    MapaAddMarker(mpvwMapa.Location.Latitude, mpvwMapa.Location.Longitude);
-
-    mpvwMapa.Zoom := 15;
+  if (NewLocation.Latitude <> 0) and (NewLocation.Longitude <> 0) then begin
     lctnsnsrSensorGPS.Active := False;
+
+    if Assigned(FMarker) then begin
+      vLocalizacao.Latitude  := FMarker.Descriptor.Position.Latitude;
+      vLocalizacao.Longitude := FMarker.Descriptor.Position.Longitude;
+    end
+    else begin
+      vLocalizacao.Latitude  := NewLocation.Latitude;
+      vLocalizacao.Longitude := NewLocation.Longitude;
+
+      MapaAddMarker(vLocalizacao.Latitude, vLocalizacao.Longitude);
+    end;
+
+    mpvwMapa.Location := vLocalizacao;
+    mpvwMapa.Zoom     := 15;
   end;
 end;
 
@@ -498,6 +507,7 @@ begin
     lstbxMensagem.EndUpdate;
   end;
 
+  edtMensagem.Text  := '';
   lytMensagem.Align := TAlignLayout.Client;
   FotoAbrirMenuSelecao(False);
 
@@ -754,6 +764,8 @@ begin
   if vMsg <> '' then
     ShowMessage(vMsg)
   else begin
+    tbcPrincipal.ActiveTab := tbtmPrincCadastro;
+    tbcCadastro.ActiveTab  := tbtmCadDados;
     ConfigTelaAguarde(True);
 
     vThread := TThread.CreateAnonymousThread(

@@ -70,7 +70,7 @@ object frmPrincipal: TfrmPrincipal
       DefaultItemStyles.GroupHeaderStyle = ''
       DefaultItemStyles.GroupFooterStyle = ''
       Viewport.Width = 385.000000000000000000
-      Viewport.Height = 494.000000000000000000
+      Viewport.Height = 542.000000000000000000
       object srchbxOcorencias: TSearchBox
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Top
@@ -293,7 +293,7 @@ object frmPrincipal: TfrmPrincipal
           DefaultItemStyles.GroupHeaderStyle = ''
           DefaultItemStyles.GroupFooterStyle = ''
           Viewport.Width = 105.000000000000000000
-          Viewport.Height = 494.000000000000000000
+          Viewport.Height = 542.000000000000000000
           object srchbxLinha: TSearchBox
             Touch.InteractiveGestures = [LongTap, DoubleTap]
             Align = Top

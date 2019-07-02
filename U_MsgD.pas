@@ -53,6 +53,7 @@ Uses
     FFontName: String;
     FFontSizeTitle: Integer;
     FFontSizeText: Integer;
+    FWidth: Single;
     procedure SetFormMsg(const Value: TForm);
     procedure SetActionCancel(const Value: TAction);
     procedure SetActionOk(const Value: TAction);
@@ -87,6 +88,7 @@ Uses
     procedure SetFontSizeTitle(const Value: Integer);
     procedure SetFontSizeText(const Value: Integer);
 
+    procedure SetWidth(const Value: Single);
   Var
 
     RectMsg, RectMsgBlack, RectMsgTransp, RectMsgBottom, RectInformation : TRectangle;
@@ -117,6 +119,7 @@ Uses
       property BackgroundMsgOpacity : Single read FBackgroundMsgOpacity write SetBackgroundMsgOpacity;
 
       property Height : Single read FHeight write SetHeight;
+      property Width: Single read FWidth write SetWidth;
       property HeightMaxMsg : Single read FHeighhtMaxMsg write SetHeightMaxMsg;
       property AutoHeight : Boolean read FAutoHeight write SetAutoHeight;
 
@@ -189,6 +192,7 @@ begin
   FBackgroundMsgOpacity := 0.4;
   FHeightMaxMsg         := 0;
   FAutoHeight           := False;
+  FWidth                := 0;
 
   FColorBtnOk     := TAlphaColorRec.Null;
   FColorBtnCancel := TAlphaColorRec.Null;
@@ -455,6 +459,11 @@ begin
   FTypeInfo := Value;
 end;
 
+procedure TMsgD.SetWidth(const Value: Single);
+begin
+  FWidth := Value;
+end;
+
 procedure TMsgD.ShowMsgD;
 begin
 
@@ -512,7 +521,11 @@ begin
     Else
      RectMsg.Height   := FHeight;
 
-    RectMsg.Width           := FFormMsg.Width - 50;
+    if FWidth <= 0 then
+      RectMsg.Width := FFormMsg.Width - 50
+    else
+      RectMsg.Width := FWidth;
+
     RectMsg.Fill.Color      := TAlphaColorRec.White;
     RectMsg.Stroke.Color    := TAlphaColorRec.Null;
     RectMsg.XRadius         := 5;

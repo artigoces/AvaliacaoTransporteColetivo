@@ -36,7 +36,7 @@ uses
 procedure TdtmdlDados.DataModuleCreate(Sender: TObject);
 begin
   {$IFDEF MSWINDOWS}
-    fdconConexao.Params.Database := 'C:\Users\VM Windows\Downloads\AppDelphi\info\BaseApp.db';
+    fdconConexao.Params.Database := '..\..\info\BaseApp.db';
   {$ELSE}
     fdconConexao.Params.Database := TPath.Combine(TPath.GetDocumentsPath, 'BaseApp.db');
   {$ENDIF}
